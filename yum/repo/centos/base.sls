@@ -15,7 +15,7 @@
   } %}
 
   {% if repos %}
-    {% if config.mirrorhost config.mirrorlisthost %}
+    {% if config.mirrorhost or config.mirrorlisthost %}
 yum.repo.centos.base:
   require:
       {% for repo in repos %}
