@@ -29,7 +29,7 @@ yum.repo.centos.base.{{ repo }}:
     - name: {{ repo }}
         {% if config.mirrorhost %}
     - baseurl: http://{{ config.mirrorhost }}/centos/$releasever/{{ repo }}/$basearch/
-        { % else %}
+        {% else %}
     - mirrorlist: http://{{ config.mirrorlisthost }}/?release=$releasever&arch=$basearch&{{ repo }}=
         {% endif %}
         {% if config.gpgkey %}
