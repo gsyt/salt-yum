@@ -20,7 +20,7 @@ yum.repo.centos.debug:
 yum.repo.centos.base.{{ repo }}:
   pkgrepo.managed:
     - name: {{ repo }}
-    - baseurl: http://{{ config.mirrorhost }}/centos/$releasever/$basearch/
+    - baseurl: http://{{ config.mirrorhost }}/$releasever/$basearch/
     - gpgcheck: {{ 1 if config.gpgcheck else 0 }}
     - enabled: {{ 1 if repos[repo] else 0 }}
     {% endfor %}
