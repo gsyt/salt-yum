@@ -31,7 +31,7 @@ yum.repo.centos.base.{{ repo }}:
         { % else %}
     - mirrorlist: http://{{ config.mirrorlisthost }}/?release=$releasever&arch=$basearch&{{ repo }}=
         {% endif %}
-    - gpgckeck: {{ 1 if config.gpgcheck else 0 }}
+    - gpgcheck: {{ 1 if config.gpgcheck else 0 }}
     - enabled: {{ 1 if repos[repo] else 0 }}
       {% endfor %}
     {% endif %}
