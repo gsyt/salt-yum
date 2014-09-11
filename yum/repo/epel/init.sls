@@ -8,10 +8,10 @@
   {% endif %}  
 
   {% set config = {
-    'mirrorhost' = salt['pillar.get']('yum:repo:epel:mirrorhost', ''),
-    'mirrorlisthost' = salt['pillar.get']('yum:repo:epel:mirrorlisthost', 'mirrors.fedoraproject.org'),
-    'gpgcheck' = salt['pillar.get']('yum:repo:epel:gpgcheck', False),
-    'enabled' = salt['pillar.get']('yum:repo:epel:enabled', True),
+    'mirrorhost': salt['pillar.get']('yum:repo:epel:mirrorhost', ''),
+    'mirrorlisthost': salt['pillar.get']('yum:repo:epel:mirrorlisthost', 'mirrors.fedoraproject.org'),
+    'gpgcheck': salt['pillar.get']('yum:repo:epel:gpgcheck', False),
+    'enabled': salt['pillar.get']('yum:repo:epel:enabled', True),
   } %}
 
   {% if config.mirrorhost config.mirrorlisthost %}
