@@ -14,7 +14,7 @@
     'enabled': salt['pillar.get']('yum:repo:epel:enabled', True),
   } %}
 
-  {% if config.mirrorhost config.mirrorlisthost %}
+  {% if config.mirrorhost or config.mirrorlisthost %}
 yum.repo.centos.epel:
   cmd.run:
     - name: rpm -Uvh http://download.fedoraproject.org/pub/epel/{{ release }}/{{ grains['osarch'] }}/epel-release-{{ epelrelease }}.noarch.rpm
