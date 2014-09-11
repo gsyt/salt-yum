@@ -29,5 +29,6 @@ yum.repo.centos.epel:
     - mirrorlist: http://{{ config.mirrorlisthost }}/metalink?repo={{ repo }}-{{ osrelease }}&arch=$basearch
     {% endif %}
     - gpgcheck: {{ 1 if config.gpgcheck else 0 }}
+    - enabled: {{ 1 if config.enabled else 0 }}
   {% endif %}
 {% endif %}
