@@ -17,7 +17,7 @@
   {% if config.mirrorhost or config.mirrorlisthost %}
 yum.repo.centos.epel:
   cmd.run:
-    - name: rpm -Uvh http://download.fedoraproject.org/pub/epel/{{ release }}/{{ grains['osarch'] }}/epel-release-{{ epelrelease }}.noarch.rpm
+    - name: rpm -Uvh http://download.fedoraproject.org/pub/epel/{{ osrelease }}/{{ grains['osarch'] }}/epel-release-{{ epelrelease }}.noarch.rpm
     - unless: test -e /etc/yum.repos.d/epel.repo
   pkgrepo.managed:
     require:
