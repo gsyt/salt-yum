@@ -9,8 +9,8 @@ Please refer to example.pillar.sls for a list of available pillar configuration 
 
 Usage
 -----
-- Apply state 'yum.client' to configure repositories on target minions
-- Apply state 'yum.mirror' to configure yum mirrors on target minions
+- Apply state 'yum.repo.centos' to configure centos repositories on target minions
+- Apply state 'yum.repo.epel' to configure epel repositories on target minions
 
 Compatibility
 -------------
