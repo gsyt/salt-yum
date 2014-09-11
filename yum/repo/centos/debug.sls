@@ -8,6 +8,7 @@
 
   {% set config = {
     'mirrorhost': salt['pillar.get']('yum:repo:centos:debug:mirrorhost', 'debuginfo.centos.org'),
+    'gpgkey': salt['pillar.get']('yum:repo:epel:gpgkey', ''),
     'gpgcheck': salt['pillar.get']('yum:repo:centos:debug:gpgcheck', True),
   } %}
 
@@ -27,6 +28,9 @@ yum.repo.centos.base.{{ repo }}:
   pkgrepo.managed:
     - name: {{ repo }}
     - baseurl: http://{{ config.mirrorhost }}/{{ osrelease }}/$basearch/
+      {% if config.gpgkey %}
+    - gpgkey: {{ config.gpgkey }}
+      {% endif %}
     - gpgcheck: {{ 1 if config.gpgcheck else 0 }}
     - enabled: {{ 1 if repos[repo] else 0 }}
     {% endfor %}

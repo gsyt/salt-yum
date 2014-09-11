@@ -3,6 +3,7 @@
   {% set config = {
     'mirrorhost': salt['pillar.get']('yum:repo:centos:mirrorhost', ''),
     'mirrorlisthost': salt['pillar.get']('yum:repo:centos:mirrorlisthost', 'mirrorlist.centos.org'),
+    'gpgkey': salt['pillar.get']('yum:repo:centos:gpgkey', ''),
     'gpgcheck': salt['pillar.get']('yum:repo:centos:gpgcheck', True),
   } %}
 
@@ -30,6 +31,9 @@ yum.repo.centos.base.{{ repo }}:
     - baseurl: http://{{ config.mirrorhost }}/centos/$releasever/{{ repo }}/$basearch/
         { % else %}
     - mirrorlist: http://{{ config.mirrorlisthost }}/?release=$releasever&arch=$basearch&{{ repo }}=
+        {% endif %}
+        {% if config.gpgkey %}
+    - gpgkey: {{ config.gpgkey }}
         {% endif %}
     - gpgcheck: {{ 1 if config.gpgcheck else 0 }}
     - enabled: {{ 1 if repos[repo] else 0 }}
