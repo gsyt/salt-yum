@@ -3,7 +3,7 @@
   {% set config = {
     'mirrorhost': salt['pillar.get']('yum:repo:centos:mirrorhost', ''),
     'mirrorlisthost': salt['pillar.get']('yum:repo:centos:mirrorlisthost', 'mirrorlist.centos.org'),
-    'gpgcheck': salt['pillar.get']('yum:repo:centos:gpgcheck', False),
+    'gpgcheck': salt['pillar.get']('yum:repo:centos:gpgcheck', True),
   } %}
 
   {% set repos = {
