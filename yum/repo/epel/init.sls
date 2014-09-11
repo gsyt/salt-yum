@@ -23,13 +23,11 @@ yum.repo.centos.epel:
     require:
       - cmd: yum.repo.centos.epel
     - name: epel
-    - humanname: Extra Packages for Enterprise Linux {{ osrelease }} - $basearch
     {% if config.mirrorhost %}
     - baseurl: http://{{ config.mirrorhost }}/pub/epel/{{ osrelease }}/$basearch
     { % else %}
     - mirrorlist: http://{{ config.mirrorlisthost }}/metalink?repo={{ repo }}-{{ osrelease }}&arch=$basearch
     {% endif %}
-    - gpgckeck: {{ '1' if config.gpgcheck else '0' }}
-    - disabled: {{ False if config.enabled else True }}
+    - gpgckeck: {{ 1 if config.gpgcheck else 0 }}
   {% endif %}
 {% endif %}

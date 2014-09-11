@@ -26,14 +26,13 @@ yum.repo.centos.base:
 yum.repo.centos.base.{{ repo }}:
   pkgrepo.managed:
     - name: {{ repo }}
-    - humanname: CentOS-$releasever - {{ repo }}
         {% if config.mirrorhost %}
     - baseurl: http://{{ config.mirrorhost }}/centos/$releasever/{{ repo }}/$basearch/
         { % else %}
     - mirrorlist: http://{{ config.mirrorlisthost }}/?release=$releasever&arch=$basearch&{{ repo }}=
         {% endif %}
-    - gpgckeck: {{ '1' if config.gpgcheck else '0' }}
-    - disabled: {{ False if repos[repo] else True }}
+    - gpgckeck: {{ 1 if config.gpgcheck else 0 }}
+    - enabled: {{ 1 if repos[repo] else 0 }}
       {% endfor %}
     {% endif %}
   {% endif %}
