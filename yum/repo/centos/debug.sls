@@ -12,7 +12,7 @@
   } %}
 
   {% set repos = {
-    'debug': salt['pillar.get']('yum:repo:centos:base', True),
+    'debug': salt['pillar.get']('yum:repo:centos:base', False),
   } %}
 
   {% if repos %}
