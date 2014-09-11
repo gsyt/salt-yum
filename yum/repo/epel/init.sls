@@ -1,10 +1,10 @@
 {% if grains['os'] == 'CentOS' %}
   {% if grains['osrelease'].startswith('5') %}
-    {% set osrelease = 5 %}
-    {% set epelrelease = 5-4 %}
+    {% set osrelease = '5' %}
+    {% set epelrelease = '5-4' %}
   {% elif grains['osrelease'].startswith('6') %}
-    {% set osrelease = 6 %}
-    {% set epelrelease = 6-8 %}
+    {% set osrelease = '6' %}
+    {% set epelrelease = '6-8' %}
   {% endif %}  
 
   {% set config = {
