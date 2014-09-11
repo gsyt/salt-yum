@@ -1,8 +1,9 @@
 {% if grains['os'] == 'CentOS' %}
+
   {% if grains['osrelease'].startswith('5') %}
-    {% osrelease = 5 %}
+    {% set osrelease = 5 %}
   {% elif grains['osrelease'].startswith('6') %}
-    {% osrelease = 6 %}
+    {% set osrelease = 6 %}
   {% endif %}  
 
   {% set config = {
