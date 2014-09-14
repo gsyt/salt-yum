@@ -24,13 +24,17 @@ yum.repo.centos.base:
       {% endfor %}
 
       {% for repo in repos %}
+        {% set reponame = repo %}
+        {% if repo == "base" %}
+          {% set reponame = repo %}
+        {% endif %}
 yum.repo.centos.base.{{ repo }}:
   pkgrepo.managed:
     - name: {{ repo }}
         {% if config.mirrorhost %}
-    - baseurl: http://{{ config.mirrorhost }}/centos/$releasever/{{ repo }}/$basearch/
+    - baseurl: http://{{ config.mirrorhost }}/centos/$releasever/{{ reponame }}/$basearch/
         {% else %}
-    - mirrorlist: http://{{ config.mirrorlisthost }}/?release=$releasever&arch=$basearch&repo={{ repo }}=
+    - mirrorlist: http://{{ config.mirrorlisthost }}/?release=$releasever&arch=$basearch&repo={{ reponame }}=
         {% endif %}
         {% if config.gpgkey %}
     - gpgkey: {{ config.gpgkey }}
