@@ -22,7 +22,7 @@ yum.repo.epel:
     - unless: test -e /etc/yum.repos.d/epel.repo
   pkgrepo.managed:
     - require:
-      - cmd: yum.repo.centos.epel
+      - cmd: yum.repo.epel
     - name: epel
     {% if config.mirrorhost %}
     - baseurl: http://{{ config.mirrorhost }}/pub/epel/{{ osrelease }}/$basearch
