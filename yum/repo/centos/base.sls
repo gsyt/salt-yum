@@ -1,10 +1,10 @@
 {% if grains['os'] == 'CentOS' %}
 
   {% set config = {
-    'mirrorhost': salt['pillar.get']('yum:repo:centos:mirrorhost', ''),
-    'mirrorlisthost': salt['pillar.get']('yum:repo:centos:mirrorlisthost', 'mirrorlist.centos.org'),
-    'gpgkey': salt['pillar.get']('yum:repo:centos:gpgkey', ''),
-    'gpgcheck': salt['pillar.get']('yum:repo:centos:gpgcheck', True),
+    'mirrorhost': salt['pillar.get']('yum:repo:centos:base:mirrorhost', ''),
+    'mirrorlisthost': salt['pillar.get']('yum:repo:centos:base:mirrorlisthost', 'mirrorlist.centos.org'),
+    'gpgkey': salt['pillar.get']('yum:repo:centos:base:gpgkey', ''),
+    'gpgcheck': salt['pillar.get']('yum:repo:centos:base:gpgcheck', True),
   } %}
 
   {% set repos = {

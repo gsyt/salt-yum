@@ -8,7 +8,7 @@
 
   {% set config = {
     'mirrorhost': salt['pillar.get']('yum:repo:centos:debug:mirrorhost', 'debuginfo.centos.org'),
-    'gpgkey': salt['pillar.get']('yum:repo:epel:gpgkey', ''),
+    'gpgkey': salt['pillar.get']('yum:repo:centos:debug:gpgkey', ''),
     'gpgcheck': salt['pillar.get']('yum:repo:centos:debug:gpgcheck', True),
   } %}
 
