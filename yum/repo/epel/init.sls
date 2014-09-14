@@ -27,7 +27,7 @@ yum.repo.epel:
     {% if config.mirrorhost %}
     - baseurl: http://{{ config.mirrorhost }}/pub/epel/{{ osrelease }}/$basearch
     {% else %}
-    - mirrorlist: http://{{ config.mirrorlisthost }}/metalink?repo=epel-{{ osrelease }}&arch=$basearch
+    - mirrorlist: https://{{ config.mirrorlisthost }}/metalink?repo=epel-{{ osrelease }}&arch=$basearch
     {% endif %}
     {% if config.gpgkey %}
     - gpgkey: {{ config.gpgkey }}
