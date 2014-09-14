@@ -26,7 +26,7 @@ yum.repo.centos.base:
       {% for repo in repos %}
         {% set reponame = repo %}
         {% if repo == "base" %}
-          {% set reponame = repo %}
+          {% set reponame = "os" %}
         {% endif %}
 yum.repo.centos.base.{{ repo }}:
   pkgrepo.managed:
