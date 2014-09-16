@@ -8,11 +8,11 @@
   } %}
 
   {% set repos = {
-    'base': salt['pillar.get']('yum:repo:centos:base', True),
-    'updates': salt['pillar.get']('yum:repo:centos:updates', True),
-    'extras': salt['pillar.get']('yum:repo:centos:extras', True),
-    'centosplus': salt['pillar.get']('yum:repo:centos:centosplus', False),
-    'contrib': salt['pillar.get']('yum:repo:centos:contrib', False),
+    'base': salt['pillar.get']('yum:repo:centos:base:enable:base', True),
+    'updates': salt['pillar.get']('yum:repo:centos:base:enable:updates', True),
+    'extras': salt['pillar.get']('yum:repo:centos:base:enable:extras', True),
+    'centosplus': salt['pillar.get']('yum:repo:centos:base:enable:centosplus', False),
+    'contrib': salt['pillar.get']('yum:repo:centos:base:enable:contrib', False),
   } %}
 
   {% if repos %}

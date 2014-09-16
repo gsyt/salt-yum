@@ -10,9 +10,9 @@
   {% set config = {
     'mirrorhost': salt['pillar.get']('yum:repo:epel:mirrorhost', ''),
     'mirrorlisthost': salt['pillar.get']('yum:repo:epel:mirrorlisthost', 'mirrors.fedoraproject.org'),
-    'gpgkey': salt['pillar.get']('yum:repo:epel:gpgkey', ''),
+    'gpgkey': salt['pillar.get']('yum:repo:epel:gpgkey', 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'),
     'gpgcheck': salt['pillar.get']('yum:repo:epel:gpgcheck', True),
-    'enabled': salt['pillar.get']('yum:repo:epel:enabled', True),
+    'enabled': salt['pillar.get']('yum:repo:epel:enable', True),
   } %}
 
   {% if config.mirrorhost or config.mirrorlisthost %}

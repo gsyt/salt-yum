@@ -1,0 +1,8 @@
+{% set yum  = salt['grains.filter_by']( {
+  'Debian': {
+    'rsync': '/usr/bin/rsync',
+  },
+  'RedHat': {
+    'rsync': '/usr/bin/rsync',
+  },
+}, merge=salt['pillar.get']('yum:lookup')) %}
