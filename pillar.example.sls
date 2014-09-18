@@ -32,11 +32,11 @@ yum:
         name: centos-base
         rsyncurl: rsync://mirrors.liquidweb.com/CentOS/
         rsyncopts: -avSHP --numeric-ids --delete --delete-delay --delay-updates
-        backend: /tmp/repos/centos
+        path: /tmp/repos/centos
         enable: True
       epel:
         name: epel
         rsyncurl: rsync://mirrors.liquidweb.com/fedora-epel
         rsyncopts: -avSHP --numeric-ids --delete --delete-delay --delay-updates
-        backend: /tmp/repos/epel
+        path: /tmp/repos/epel
         enable: True
