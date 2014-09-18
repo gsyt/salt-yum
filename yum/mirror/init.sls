@@ -49,9 +49,6 @@ yum.mirror.{{ mirror }}.dir:
     - name: {{ mirrorconfig.path }}
     - user: {{ config.user }}
     - group: {{ config.group }}
-    - recurse: 
-      - user
-      - group
     - makedirs: True
 
 yum.mirror.{{ mirror }}.cron:
