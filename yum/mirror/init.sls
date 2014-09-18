@@ -10,17 +10,15 @@
 {% if config.mirrors %}
 yum.mirror:
   require:
-  {% if config.mirrors %}
-    {% for mirror in config.mirrors %}
-      {% set mirrorconfig = {
-        'rsyncurl': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncurl', ''),
-        'path': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':path', ''),
-      } %}
-      {% if mirrorconfig.rsyncurl and mirrorconfig.path %}
+  {% for mirror in config.mirrors %}
+    {% set mirrorconfig = {
+      'rsyncurl': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncurl', ''),
+      'path': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':path', ''),
+    } %}
+    {% if mirrorconfig.rsyncurl and mirrorconfig.path %}
     - sls: yum.mirror.{{ mirror }}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+    {% endif %}
+  {% endfor %}
   {% if config.require %}
     {% for require in config.require %}
     - sls: {{ require }}
@@ -29,16 +27,16 @@ yum.mirror:
 
   {% for mirror in config.mirrors %}
     {% set mirrorconfig = {
-        'rsyncurl': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncurl', ''),
-        'rsyncopts': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncopts', '-avSHP --numeric-ids --delete --delete-delay --delay-updates'),
-        'path': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':path', ''),
-        'enable': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':enable', True),
-        'minute': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':minute', '0'),
-        'hour': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':hour', '0'),
-        'dayweek': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':dayweek', '*'),
-        'month': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':month', '*'),
-        'daymonth': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':daymonth', '*'),
-      } %}
+      'rsyncurl': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncurl', ''),
+      'rsyncopts': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncopts', '-avSHP --numeric-ids --delete --delete-delay --delay-updates'),
+      'path': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':path', ''),
+      'enable': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':enable', True),
+      'minute': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':minute', '0'),
+      'hour': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':hour', '0'),
+      'dayweek': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':dayweek', '*'),
+      'month': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':month', '*'),
+      'daymonth': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':daymonth', '*'),
+    } %}
     {% if mirrorconfig.rsyncurl and mirrorconfig.path %}
       {% set updatefile = mirrorconfig.path ~ '/update' %}
       {% set excludefile = mirrorconfig.path ~ '/exclude' %}
