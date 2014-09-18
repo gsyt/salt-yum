@@ -27,22 +27,21 @@ yum.mirror:
     {% endfor %}
   {% endif %}
 
-  {% if config.mirrors %}
-    {% for mirror in config.mirrors %}
-      {% set mirrorconfig = {
-          'rsyncurl': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncurl', ''),
-          'rsyncopts': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncopts', '-avSHP --numeric-ids --delete --delete-delay --delay-updates'),
-          'path': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':path', ''),
-          'enable': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':enable', True),
-          'minute': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':minute', '0'),
-          'hour': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':hour', '0'),
-          'dayweek': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':dayweek', '*'),
-          'month': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':month', '*'),
-          'daymonth': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':daymonth', '*'),
-        } %}
-      {% if mirrorconfig.rsyncurl and mirrorconfig.path %}
-        {% set updatefile = mirrorconfig.path ~ '/update' %}
-        {% set excludefile = mirrorconfig.path ~ '/exclude' %}
+  {% for mirror in config.mirrors %}
+    {% set mirrorconfig = {
+        'rsyncurl': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncurl', ''),
+        'rsyncopts': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':rsyncopts', '-avSHP --numeric-ids --delete --delete-delay --delay-updates'),
+        'path': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':path', ''),
+        'enable': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':enable', True),
+        'minute': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':minute', '0'),
+        'hour': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':hour', '0'),
+        'dayweek': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':dayweek', '*'),
+        'month': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':month', '*'),
+        'daymonth': salt['pillar.get']('yum:mirror:mirrors:' ~ mirror ~ ':daymonth', '*'),
+      } %}
+    {% if mirrorconfig.rsyncurl and mirrorconfig.path %}
+      {% set updatefile = mirrorconfig.path ~ '/update' %}
+      {% set excludefile = mirrorconfig.path ~ '/exclude' %}
 yum.mirror.{{ mirror }}:
   require:
     - sls: yum.mirror.{{ mirror }}.cron
@@ -69,7 +68,6 @@ yum.mirror.{{ mirror }}.cron:
     - month: '{{ mirrorconfig.month }}'
     - dayweek: '{{ mirrorconfig.dayweek }}'
     - identifier: {{ mirror }}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
+    {% endif %}
+  {% endfor %}
 {% endif %}
