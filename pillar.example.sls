@@ -23,6 +23,13 @@ yum:
       gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
       gpgcheck: True
       enable: True
+    other:
+      id: logstash-1.3
+      name: logstash repository for 1.3.x packages
+      baseurl: http://packages.elasticsearch.org/logstash/1.3/centos
+      gpgcheck: 1
+      gpgkey: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+      enable: 1
   mirror:
     user: root
     group: root
