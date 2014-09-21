@@ -16,7 +16,7 @@ yum.repo.centos.contrib:
     - name: contrib
     {% if config.mirrorurl %}
     - baseurl: {{ config.mirrorurl }}
-    {% elif config.mirrorhosturl %}
+    {% elif config.mirrorlisturl %}
     - mirrorlist: {{ config.mirrorlisturl }}
     {% elif config.mirrorhost %}
     - baseurl: http://{{ config.mirrorhost }}/centos/$releasever/contrib/$basearch/

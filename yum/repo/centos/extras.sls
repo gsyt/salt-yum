@@ -16,7 +16,7 @@ yum.repo.centos.extras:
     - name: extras
     {% if config.mirrorurl %}
     - baseurl: {{ config.mirrorurl }}
-    {% elif config.mirrorhosturl %}
+    {% elif config.mirrorlisturl %}
     - mirrorlist: {{ config.mirrorlisturl }}
     {% elif config.mirrorhost %}
     - baseurl: http://{{ config.mirrorhost }}/centos/$releasever/extras/$basearch/
