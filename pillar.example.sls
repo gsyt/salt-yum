@@ -3,16 +3,42 @@ yum:
     rsync: /usr/bin/rsync
   repo:
     centos:
-      base:
+      os:
+        mirrorurl: 
+        mirrorhost: 
+        mirrorlisturl: 
         mirrorlisthost: 'mirrorlist.centos.org'
         gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
         gpgcheck: True
-        enable:
-          base: True
-          updates: True
-          extras: True
-          centosplus: False
-          contrib: False
+        enable: True
+      updates:
+        mirrorurl: 
+        mirrorhost: 
+        mirrorlisturl: 
+        mirrorlisthost: 'mirrorlist.centos.org'
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+        enable: True
+      extras:
+        mirrorurl: 
+        mirrorhost: 
+        mirrorlisturl: 
+        mirrorlisthost: 'mirrorlist.centos.org'
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+        enable: True
+      centosplus:
+        mirrorurl: 
+        mirrorhost: 
+        mirrorlisturl: 
+        mirrorlisthost: 'mirrorlist.centos.org'
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+        enable: False
+      contrib:
+        mirrorurl: 
+        mirrorhost: 
+        mirrorlisturl: 
+        mirrorlisthost: 'mirrorlist.centos.org'
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+        enable: False
       debug:
         mirrorhost: debuginfo.centos.org
         gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Debug-6
