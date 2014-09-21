@@ -5,6 +5,9 @@
   {% elif grains['osrelease'].startswith('6') %}
     {% set osrelease = '6' %}
     {% set epelrelease = '6-8' %}
+  {% elif grains['osrelease'].startswith('7') %}
+    {% set osrelease = '6' %}
+    {% set epelrelease = '7-1' %}
   {% endif %}  
 
   {% set config = {
