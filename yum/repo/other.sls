@@ -5,7 +5,7 @@
 } %}
 
 {% if config.repos %}
-yum.repo:
+yum.repo.other:
   require:
   {% for repo in config.repos %}
     {% set repoconfig = {
@@ -18,7 +18,7 @@ yum.repo:
       'enable': salt['pillar.get']('yum:repo:other:' ~ repo ~ ':enable', ''),
     } %}
     {% if repoconfig.mirrorlist or repoconfig.baseurl %}
-    - sls: yum.repo.{{ repo }}
+    - sls: yum.repo.other.{{ repo }}
     {% endif %}
   {% endfor %}
 
@@ -33,7 +33,7 @@ yum.repo:
       'enable': salt['pillar.get']('yum:repo:other:' ~ repo ~ ':enable', ''),
     } %}
     {% if repoconfig.mirrorlist or repoconfig.baseurl %}
-yum.repo.{{ repo }}:
+yum.repo.other.{{ repo }}:
   pkgrepo.managed:
     - name: {{ repoconfig.id }}
     - humanname: {{ repoconfig.name }}
