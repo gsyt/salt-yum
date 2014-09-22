@@ -7,7 +7,7 @@
     'mirrorlisthost': salt['pillar.get']('yum:repo:centos:contrib:mirrorlisthost', 'mirrorlist.centos.org'),
     'gpgkey': salt['pillar.get']('yum:repo:centos:contrib:gpgkey', 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6'),
     'gpgcheck': salt['pillar.get']('yum:repo:centos:contrib:gpgcheck', True),
-    'enable': salt['pillar.get']('yum:repo:centos:contrib:enable', True),
+    'enable': salt['pillar.get']('yum:repo:centos:contrib:enable', False),
   } %}
 
   {% if config.mirrorhost or config.mirrorlisthost %}
