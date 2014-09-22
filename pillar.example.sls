@@ -40,6 +40,7 @@ yum:
         gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
         enable: False
       debug:
+        mirrorurl: 
         mirrorhost: debuginfo.centos.org
         gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Debug-6
         gpgcheck: True
