@@ -11,9 +11,9 @@
   } %}
 
   {% if config.mirrorhost or config.mirrorlisthost %}
-yum.repo.centos.os:
+yum.repo.centos.base:
   pkgrepo.managed:
-    - name: os
+    - name: base
     {% if config.mirrorurl %}
     - baseurl: {{ config.mirrorurl }}
     {% elif config.mirrorlisturl %}
