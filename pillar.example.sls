@@ -53,6 +53,21 @@ yum:
       gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
       gpgcheck: True
       enable: True
+    foreman:
+      base:
+        mirrorurl:
+        mirrorhost: yum.theforeman.org
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-foreman
+        gpgcheck: True
+        enabled: True
+        source: False
+      plugins:
+        mirrorurl:
+        mirrorhost: yum.theforeman.org
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-foreman
+        gpgcheck: True
+        enabled: True
+        source: False
     other:
       id: logstash-1.3
       name: logstash repository for 1.3.x packages

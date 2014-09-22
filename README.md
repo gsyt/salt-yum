@@ -10,8 +10,9 @@ Please refer to example.pillar.sls for a list of available pillar configuration 
 Usage
 -----
 - Apply state 'yum.repo.centos' to configure centos repositories on target minions
-- Apply state 'yum.repo.other' to configure arbitrary centos repositories on target minions
 - Apply state 'yum.repo.epel' to configure epel repositories on target minions
+- Apply state 'yum.repo.foreman' to configure foreman repositories on target minions
+- Apply state 'yum.repo.other' to configure arbitrary centos repositories on target minions
 - Apply state 'yum.mirrors' to configure arbitrary rsync mirrors on target minions
 
 Compatibility
