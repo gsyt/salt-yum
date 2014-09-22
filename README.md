@@ -5,7 +5,7 @@ Salt formula to set up and configure [yum](https://fedoraproject.org/wiki/yum) r
 
 Parameters
 ------------
-Please refer to example.pillar.sls for a list of available pillar configuration options
+Please refer to pillar.example.sls for a list of available pillar configuration options
 
 Usage
 -----
