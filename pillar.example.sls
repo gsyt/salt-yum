@@ -45,6 +45,9 @@ yum:
         gpgcheck: True
         enable: True
     epel:
+      mirrorurl: 
+      mirrorhost:
+      mirrorlisturl: 
       mirrorlisthost: mirrors.fedoraproject.org
       gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
       gpgcheck: True

@@ -11,7 +11,9 @@
   {% endif %}  
 
   {% set config = {
+    'mirrorurl': salt['pillar.get']('yum:repo:epel:mirrorurl', ''),
     'mirrorhost': salt['pillar.get']('yum:repo:epel:mirrorhost', ''),
+    'mirrorlisturl': salt['pillar.get']('yum:repo:epel:mirrorlisturl', ''),
     'mirrorlisthost': salt['pillar.get']('yum:repo:epel:mirrorlisthost', 'mirrors.fedoraproject.org'),
     'gpgkey': salt['pillar.get']('yum:repo:epel:gpgkey', 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6'),
     'gpgcheck': salt['pillar.get']('yum:repo:epel:gpgcheck', True),
@@ -27,7 +29,11 @@ yum.repo.epel:
     - require:
       - cmd: yum.repo.epel
     - name: epel
-    {% if config.mirrorhost %}
+    {% if config.mirrorurl %}
+    - baseurl: {{ config.mirrorurl }}
+    {% elif config.mirrorlisturl %}
+    - mirrorlist: {{ config.mirrorlisturl }}
+    {% elif config.mirrorhost %}
     - baseurl: http://{{ config.mirrorhost }}/pub/epel/{{ osrelease }}/$basearch
     {% else %}
     - mirrorlist: https://{{ config.mirrorlisthost }}/metalink?repo=epel-{{ osrelease }}&arch=$basearch
