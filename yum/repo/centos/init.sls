@@ -1,3 +1,5 @@
+{% if grains['os'] == 'CentOS' %}
+
 include:
   - yum.repo.centos.base
   - yum.repo.centos.updates
@@ -14,3 +16,5 @@ yum.repo.centos:
     - sls: yum.repo.centos.centosplus
     - sls: yum.repo.centos.contrib
     - sls: yum.repo.centos.debug
+
+{% endif %}
