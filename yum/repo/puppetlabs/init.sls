@@ -13,10 +13,6 @@ include:
     {% set osrelease = '7' %}
   {% endif %}  
 
-  {% set config = {
-    'version': salt['pillar.get']('yum:repo:foreman:version', 'latest'),
-  } %}
-
 yum.repo.puppetlabs:
   require:
     - sls: yum.repo.puppetlabs.products
