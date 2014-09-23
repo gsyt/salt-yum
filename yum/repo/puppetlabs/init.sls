@@ -27,3 +27,4 @@ yum.repo.puppetlabs.cmd:
   cmd.run:
     - name: rpm -Uvh http://yum.puppetlabs.com/puppetlabs-release-el-{{ osrelease }}.noarch.rpm
     - unless: test -e /etc/yum.repos.d/puppetlabs.repo
+{% endif %}
