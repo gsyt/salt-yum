@@ -54,6 +54,7 @@ yum:
       gpgcheck: True
       enable: True
     foreman:
+      version: latest
       base:
         mirrorurl:
         mirrorhost: yum.theforeman.org
@@ -67,6 +68,28 @@ yum:
         gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-foreman
         gpgcheck: True
         enabled: True
+        source: False
+    puppetlabs:
+      products:
+        mirrorurl:
+        mirrorhost: yum.puppetlabs.com
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs
+        gpgcheck: True
+        enabled: True
+        source: False
+      deps:
+        mirrorurl:
+        mirrorhost: yum.puppetlabs.com
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs
+        gpgcheck: True
+        enabled: True
+        source: False
+      devel:
+        mirrorurl:
+        mirrorhost: yum.puppetlabs.com
+        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs
+        gpgcheck: True
+        enabled: False
         source: False
     other:
       id: logstash-1.3

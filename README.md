@@ -11,7 +11,8 @@ Usage
 -----
 - Apply state 'yum.repo.centos' to configure centos repositories on target minions
 - Apply state 'yum.repo.epel' to configure epel repositories on target minions
-- Apply state 'yum.repo.foreman' to configure foreman repositories on target minions
+- Apply state 'yum.repo.foreman' to configure theforeman repositories on target minions
+- Apply state 'yum.repo.puppetlabs' to configure puppetlabs repositories on target minions
 - Apply state 'yum.repo.other' to configure arbitrary centos repositories on target minions
 - Apply state 'yum.mirrors' to configure arbitrary rsync mirrors on target minions
 
