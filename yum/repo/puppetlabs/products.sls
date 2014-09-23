@@ -52,5 +52,4 @@ yum.repo.puppetlabs.products.source:
     {% endif %}
     - gpgcheck: {{ 1 if config.gpgcheck else 0 }}
     - enabled: {{ 1 if config.source else 0 }}
-  {% endif %}
 {% endif %}
