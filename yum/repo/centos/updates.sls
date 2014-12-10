@@ -1,6 +1,7 @@
 {% if grains['os'] == 'CentOS' %}
 
   {% set config = {
+    'manage': salt['pillar.get']('yum:repo:centos:updates:manage', True),
     'mirrorurl': salt['pillar.get']('yum:repo:centos:updates:mirrorurl', ''),
     'mirrorhost': salt['pillar.get']('yum:repo:centos:updates:mirrorhost', ''),
     'mirrorlisturl': salt['pillar.get']('yum:repo:centos:updates:mirrorlisturl', ''),
@@ -10,7 +11,7 @@
     'enable': salt['pillar.get']('yum:repo:centos:updates:enable', True),
   } %}
 
-  {% if config.mirrorhost or config.mirrorlisthost %}
+  {% if config.manage and ( config.mirrorhost or config.mirrorlisthost ) %}
 yum.repo.centos.updates:
   pkgrepo.managed:
     - name: updates

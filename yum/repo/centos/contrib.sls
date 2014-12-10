@@ -1,6 +1,7 @@
 {% if grains['os'] == 'CentOS' %}
 
   {% set config = {
+    'manage': salt['pillar.get']('yum:repo:centos:contrib:manage', False),
     'mirrorurl': salt['pillar.get']('yum:repo:centos:contrib:mirrorurl', ''),
     'mirrorhost': salt['pillar.get']('yum:repo:centos:contrib:mirrorhost', ''),
     'mirrorlisturl': salt['pillar.get']('yum:repo:centos:contrib:mirrorlisturl', ''),
@@ -10,7 +11,7 @@
     'enable': salt['pillar.get']('yum:repo:centos:contrib:enable', False),
   } %}
 
-  {% if config.mirrorhost or config.mirrorlisthost %}
+  {% if config.manage and ( config.mirrorhost or config.mirrorlisthost ) %}
 yum.repo.centos.contrib:
   pkgrepo.managed:
     - name: contrib

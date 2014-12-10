@@ -1,6 +1,7 @@
 {% if grains['os'] == 'CentOS' %}
 
   {% set config = {
+    'manage': salt['pillar.get']('yum:repo:centos:centosplus:manage', False),
     'mirrorurl': salt['pillar.get']('yum:repo:centos:centosplus:mirrorurl', ''),
     'mirrorhost': salt['pillar.get']('yum:repo:centos:centosplus:mirrorhost', ''),
     'mirrorlisturl': salt['pillar.get']('yum:repo:centos:centosplus:mirrorlisturl', ''),
@@ -10,7 +11,7 @@
     'enable': salt['pillar.get']('yum:repo:centos:centosplus:enable', False),
   } %}
 
-  {% if config.mirrorhost or config.mirrorlisthost %}
+  {% if config.manage and ( config.mirrorhost or config.mirrorlisthost ) %}
 yum.repo.centos.centosplus:
   pkgrepo.managed:
     - name: centosplus
