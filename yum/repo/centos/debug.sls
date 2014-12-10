@@ -7,6 +7,7 @@
   {% endif %}  
 
   {% set config = {
+    'manage': salt['pillar.get']('yum:repo:centos:debug:manage', False),
     'mirrorurl': salt['pillar.get']('yum:repo:centos:debug:mirrorurl', ''),
     'mirrorhost': salt['pillar.get']('yum:repo:centos:debug:mirrorhost', 'debuginfo.centos.org'),
     'gpgkey': salt['pillar.get']('yum:repo:centos:debug:gpgkey', 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Debug-6'),
@@ -17,7 +18,7 @@
     'debug': salt['pillar.get']('yum:repo:centos:debug:enable', False),
   } %}
 
-  {% if repos %}
+  {% if config.manage and repos %}
 yum.repo.centos.debug:
   require:
     {% for repo in repos %}
