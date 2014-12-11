@@ -38,7 +38,7 @@ yum.repo.foreman:
 
 yum.repo.foreman.pkg:
   cmd.run:
-    - name: rpm -Uvh http://yum.theforeman.org/releases/{{ config.version }}/el{{ osrelease }}/{{ grains['osarch'] }}/foreman-release.rpm
+    - name: yum install -y http://yum.theforeman.org/releases/{{ config.version }}/el{{ osrelease }}/{{ grains['osarch'] }}/foreman-release.rpm
     - unless: test -e /etc/yum.repos.d/foreman.repo
 
   {% if baseconfig.mirrorurl or baseconfig.mirrorhost %}
